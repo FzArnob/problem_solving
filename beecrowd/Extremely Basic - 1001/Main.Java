@@ -8,7 +8,6 @@ public class Main {
         int a = sread.nextInt();
         int b = sread.nextInt();
         System.out.println("X = " + (a + b));
-
     }
 
 }

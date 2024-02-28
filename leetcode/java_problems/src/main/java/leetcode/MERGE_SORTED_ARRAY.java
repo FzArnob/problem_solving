@@ -2,6 +2,8 @@ package leetcode;
 
 import leetcode.merge_sorted_array.Solution;
 
+import static leetcode.HELPER.printArray;
+
 public class MERGE_SORTED_ARRAY {
     public static void main(String[] args) {
         // Example 1
@@ -20,13 +22,5 @@ public class MERGE_SORTED_ARRAY {
         System.out.println("After merging: ");
         printArray(nums1);
         printArray(nums2);
-    }
-
-    // Helper method to print an array
-    private static void printArray(int[] arr) {
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
     }
 }

@@ -1,0 +1,73 @@
+# Intuition
+The problem aims to find the majority element in an array, which is an element that appears more than ⌊n/2⌋ times, where n is the length of the array. Sorting the array makes the majority element appear at the middle index.
+
+# Approach
+The approach is to sort the given array in non-decreasing order. After sorting, the majority element will always be at the middle index of the sorted array. This is because the majority element appears more than ⌊n/2⌋ times, and when the array is sorted, it will have consecutive occurrences.
+
+# Complexity
+Time complexity: O(n log n) - Sorting the array takes O(n log n) time.
+Space complexity: O(1) - Constant space is used as we are sorting the array in-place.
+
+# Code
+```Java []
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        return nums[n/2];
+    }
+}
+```
+```C++ []
+class Solution {
+public:
+    int majorityElement(std::vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        int n = nums.size();
+        return nums[n/2];
+    }
+};
+```
+```Python []
+class Solution:
+    def majorityElement(self, nums):
+        nums.sort()
+        n = len(nums)
+        return nums[n // 2]
+```
+```JavaScript []
+class Solution {
+    majorityElement(nums) {
+        nums.sort((a, b) => a - b);
+        const n = nums.length;
+        return nums[Math.floor(n / 2)];
+    }
+}
+```
+```Ruby []
+class Solution
+  def majority_element(nums)
+    nums.sort!
+    n = nums.length
+    nums[n / 2]
+  end
+end
+```
+```PHP []
+class Solution {
+    public function majorityElement($nums) {
+        sort($nums);
+        $n = count($nums);
+        return $nums[floor($n / 2)];
+    }
+}
+```
+```Rust []
+impl Solution {
+    pub fn majority_element(nums: Vec<i32>) -> i32 {
+        let mut nums = nums;
+        nums.sort();
+        nums[nums.len() / 2]
+    }
+}
+```

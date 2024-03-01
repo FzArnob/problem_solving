@@ -1,6 +1,7 @@
 package leetcode.majority_element;
 
 public class Solution {
+    // https://leetcode.com/problems/majority-element/
     public int majorityElement(int[] nums) {
         int c = 0;
         int m = 0;

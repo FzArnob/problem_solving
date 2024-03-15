@@ -1,0 +1,106 @@
+✅Beats 100%🔥|| 0ms ||🌟Greedy Algorithm || Java || C++ || Python || Rust || JavaScript
+
+# Intuition:
+The problem requires maximizing profit by buying and selling stocks on the same day. We need to exploit every opportunity to gain profit, i.e., buy at a lower price and sell at a higher price on subsequent days. This problem can be solved by identifying the consecutive price increases and considering them as potential profit-making opportunities.
+
+![image.png](https://assets.leetcode.com/users/images/290e2a76-379a-4ead-871d-3ab17a62b30a_1710472925.7038996.png)
+
+# Using Greedy Algorithm:
+We approach this problem greedily by maximizing profit at each opportunity. Since we can buy and sell on the same day if there's a price increase, instead of looking for the overall optimal solution, we focus on maximizing profit at each step, which eventually leads to the maximum overall profit. 
+
+To learn more about greedy algorithms, you can visit [Greedy Algorithm](https://en.wikipedia.org/wiki/Greedy_algorithm).
+
+# Approach:
+1. Initialize `profit` to 0, representing the total profit we'll accumulate.
+2. Initialize `buy` to the price on the first day (`prices[0]`), representing the price at which we would buy the stock.
+3. Iterate through the prices starting from the second day (`i=1`) to the last day (`i<days`).
+4. Check if the current price (`prices[i]`) is greater than the buying price (`buy`).
+   - If yes, calculate the profit by subtracting the buying price from the current price and add it to the `profit`.
+   - Update the buying price to the current price for the next iteration.
+5. Return the accumulated profit.
+
+# Relating to Solution:
+- `profit` is initially set to 0, `buy` is set to the price on the first day (`prices[0]`), and `days` is set to the length of the prices array.
+- The loop iterates through the prices array starting from the second day (`i=1`) as buying and selling the same stock on that day will gain `0` profit.
+- **Greedy Approach**: Inside the loop, if the current price is greater than the buying price, then add the profit `profit += prices[i] - buy`
+- Always update the buying price `buy = prices[i]`
+- Finally, it returns the accumulated profit.
+
+# Code
+Please **Upvote** if you find it useful 👍⬆️
+```java []
+class Solution {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        int buy = prices[0];
+        int days = prices.length;
+        for(int i=1;i<days;i++) {
+            if(buy < prices[i]) profit += prices[i] - buy;
+            buy = prices[i];
+        }
+        return profit;
+    }
+}
+```
+```C++ []
+class Solution {
+public:
+    int maxProfit(std::vector<int>& prices) {
+        int profit = 0;
+        int buy = prices[0];
+        int days = prices.size();
+        for(int i = 1; i < days; i++) {
+            if(buy < prices[i]) 
+                profit += prices[i] - buy;
+            buy = prices[i];
+        }
+        return profit;
+    }
+};
+```
+```python []
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        buy = prices[0]
+        days = len(prices)
+        for i in range(1, days):
+            if buy < prices[i]:
+                profit += prices[i] - buy
+            buy = prices[i]
+        return profit
+```
+```rust []
+impl Solution {
+    pub fn max_profit(prices: Vec<i32>) -> i32 {
+        let mut profit = 0;
+        let mut buy = prices[0];
+        let days = prices.len();
+        for i in 1..days {
+            if buy < prices[i] {
+                profit += prices[i] - buy;
+            }
+            buy = prices[i];
+        }
+        profit
+    }
+}
+```
+```javascript []
+var maxProfit = function(prices) {
+    let profit = 0;
+    let buy = prices[0];
+    const days = prices.length;
+    for(let i = 1; i < days; i++) {
+        if(buy < prices[i]) {
+            profit += prices[i] - buy;
+        }
+        buy = prices[i];
+    }
+    return profit;
+};
+```
+
+# Complexity:
+- **Time Complexity:** The algorithm has a time complexity of *O(n)*, where n is the number of days (length of the prices array). This is because we traverse the prices array only once.
+- **Space Complexity:** The algorithm has a space complexity of *O(1)*, as it uses only a constant amount of extra space regardless of the input size.
